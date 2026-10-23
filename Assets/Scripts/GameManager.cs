@@ -8,6 +8,10 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public TextMeshProUGUI text;
     public float playerhealth = 100f;
+    int score;
+
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +38,17 @@ public class GameManager : MonoBehaviour
         }
 
     }
+    public void ChangeScore(int scoreIncrement)
+
+    {
+
+
+        score += scoreIncrement;
+
+        text.text = "Score: " + score.ToString();
+
+    }
+
     void playerDie()
     {
         Debug.Log("End");

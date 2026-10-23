@@ -16,6 +16,7 @@ public class Gun : MonoBehaviour
     [SerializeField] Transform muzzle;
     [SerializeField] float fadeDuration = 0.3f;
 
+
     private void Awake()
     {
         controls = new CharacterInput();
@@ -31,6 +32,7 @@ public class Gun : MonoBehaviour
     {
        if (controls.Player.Shoot.triggered && Time.time > _timeSinceFired)
         {
+
             Shoot();
             _timeSinceFired = Time.time + _fireRate;
         }

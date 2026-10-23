@@ -7,7 +7,7 @@ public class Damager : MonoBehaviour
     public float health = 50f;
     public float damage = 10f;
     bool hit = false;
-
+    [SerializeField] AudioClip[] PlayerHurtSoundClips;
 
     //Start is called before the first frame update
    
@@ -16,6 +16,7 @@ public class Damager : MonoBehaviour
         Debug.Log(health);
         if (other.transform.root.CompareTag("Player"))
         {
+            SoundFXManager.instance.PlayRandomSoundFXClip(PlayerHurtSoundClips, transform, 1f);
             hit = true;
 
         }

@@ -5,9 +5,13 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-	private CharacterInput controls; // Our controls we defined
+    [SerializeField] private AudioSource footstepsSound;
+
+    private CharacterInput controls; // Our controls we defined
     private Vector3 velocity; // To hold our current velocity
     private Vector2 move; // To hold our move
+    bool isMoving = false;
+
 
     private CharacterController controller; // Character controller
 
@@ -31,6 +35,26 @@ public class PlayerController : MonoBehaviour
 		PlayerMovement();
 		Grav();
 		Jump();
+        PlayerFootstepCheck();
+        if (isMoving && isGrounded())
+        {
+            footstepsSound.enabled = true;
+        }
+        else
+        {
+            footstepsSound.enabled = false;
+        }
+    }
+
+    private void PlayerFootstepCheck()
+    {
+        if (Keyboard.current.wKey.isPressed ||
+         Keyboard.current.aKey.isPressed ||
+         Keyboard.current.sKey.isPressed ||
+         Keyboard.current.dKey.isPressed)
+        {
+            isMoving = true;
+        }
     }
 
     private void Grav()

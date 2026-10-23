@@ -5,8 +5,15 @@ using UnityEngine;
 public class Target : MonoBehaviour
 {
     public float health = 50f;
-   // public float damage = 10f;
+    // public float damage = 10f;
     //bool hit = false;
+
+    // Damage sound clips
+    [SerializeField] private AudioClip[] damageSoundClips;
+
+    // Prefab of the collectable
+
+    public GameObject Collectable;
 
 
     // Start is called before the first frame update
@@ -36,6 +43,7 @@ public class Target : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
+        SoundFXManager.instance.PlayRandomSoundFXClip(damageSoundClips, transform, 1f);
         health -= amount;
         Debug.Log(health);
 
@@ -47,8 +55,9 @@ public class Target : MonoBehaviour
     }
     void Die()
     {
+        Instantiate(Collectable, gameObject.transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 
-    
+
 }
