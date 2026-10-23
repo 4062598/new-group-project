@@ -7,7 +7,7 @@ public class cubescript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //yippee
     }
 
     // Update is called once per frame
