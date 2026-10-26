@@ -40,8 +40,8 @@ public class Shotgun : MonoBehaviour
         
         if (controls.Player.Shoot.triggered && Time.time > _timeSinceFired && CanShoot())
         {
-          
-                Shoot();
+            
+            Shoot();
             _timeSinceFired = Time.time + _fireRate;
         }
     }
@@ -79,7 +79,7 @@ public class Shotgun : MonoBehaviour
     {
         Vector3 targetPos = fpsCam.transform.position + fpsCam.transform.forward * range;
         targetPos = new Vector3(
-            targetPos.x + Random.Range(-inaccuracyDistance,inaccuracyDistance),
+            targetPos.x + Random.Range(-inaccuracyDistance, inaccuracyDistance),
             targetPos.y + Random.Range(-inaccuracyDistance, inaccuracyDistance),
             targetPos.z + Random.Range(-inaccuracyDistance, inaccuracyDistance)
             );
