@@ -6,7 +6,7 @@ public class Damager : MonoBehaviour
 {
     public float health = 50f;
     public float damage = 10f;
-    bool hit = false;
+    public bool hit = false;
     [SerializeField] AudioClip[] PlayerHurtSoundClips;
 
     //Start is called before the first frame update

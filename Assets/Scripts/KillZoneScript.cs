@@ -11,7 +11,7 @@ public class KillZoneScript : MonoBehaviour
         }
         else if (other.transform.root.CompareTag("Player")) 
         {
-            hit = true;
+            Debug.Log("hit");
         }
     }
 }
