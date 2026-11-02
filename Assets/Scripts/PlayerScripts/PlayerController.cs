@@ -55,6 +55,10 @@ public class PlayerController : MonoBehaviour
         {
             isMoving = true;
         }
+        else
+        {
+            isMoving = false;
+        }
     }
 
     private void Grav()

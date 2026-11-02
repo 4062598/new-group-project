@@ -3,8 +3,15 @@ using System.Collections;
 
 public class KillZoneScript : MonoBehaviour
 {
-    void OnTriggerExit(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-        Destroy(other.gameObject);
+        if (other.transform.root.CompareTag("Target"))
+        {
+            Destroy(other.gameObject);
+        }
+        else if (other.transform.root.CompareTag("Player")) 
+        {
+            hit = true;
+        }
     }
 }
