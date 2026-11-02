@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Audio Config
   m_EditorClassIdentifier: 
   Volume: 1
-  FireClips: []
-  EmptyClip: {fileID: 0}
-  ReloadClip: {fileID: 0}
-  LastBulletClip: {fileID: 0}
+  FireClips:
+  - {fileID: 8300000, guid: 99348524f0ef5b3469b6d1976f17370c, type: 3}
+  - {fileID: 8300000, guid: 0910b552636052c42a5d5fb6d168dc27, type: 3}
+  - {fileID: 8300000, guid: 8115c336b0fa59f41b1cb0af599a2271, type: 3}
+  EmptyClip: {fileID: 8300000, guid: bc422f663c136bf498c21911b677bcb8, type: 3}
+  ReloadClip: {fileID: 8300000, guid: cc1bb2a3d7b75d641b3ef2d2e705867b, type: 3}
+  LastBulletClip: {fileID: 8300000, guid: 99348524f0ef5b3469b6d1976f17370c, type: 3}
