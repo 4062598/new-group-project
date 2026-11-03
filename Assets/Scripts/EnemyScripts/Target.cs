@@ -13,7 +13,7 @@ public class Target : MonoBehaviour
 
     // Prefab of the collectable
 
-    public GameObject Collectable;
+   // public GameObject Collectable;
 
 
     // Start is called before the first frame update
@@ -43,20 +43,20 @@ public class Target : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-        SoundFXManager.instance.PlayRandomSoundFXClip(damageSoundClips, transform, 1f);
+       
         health -= amount;
         Debug.Log(health);
-
+       
         if (health <= 0f)
         {
             Die();
         }
-       
+       // SoundFXManager.instance.PlayRandomSoundFXClip(damageSoundClips, transform, 1f);
     }
     void Die()
     {
-        Instantiate(Collectable, gameObject.transform.position, Quaternion.identity);
         Destroy(gameObject);
+        // Instantiate(Collectable, gameObject.transform.position, Quaternion.identity);
     }
 
 

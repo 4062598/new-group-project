@@ -1068,7 +1068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3473924f0e2cf3d4da172f3ca11aef37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numEnemies: 100
+  numEnemies: 20
   prefab: {fileID: 1617309313}
   playerTransform: {fileID: 511086707}
   spawnRadius: 20
@@ -1212,11 +1212,11 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 728763455}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: ae2d2db46850b7c47ab85240cdc448f9, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -2893,6 +2893,14 @@ PrefabInstance:
       propertyPath: groundMask.m_Bits
       value: 64
       objectReference: {fileID: 0}
+    - target: {fileID: 952547904781508226, guid: bdb6f4e7380672543985f0a51d0bfe12, type: 3}
+      propertyPath: damageSoundClips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 952547904781508226, guid: bdb6f4e7380672543985f0a51d0bfe12, type: 3}
+      propertyPath: damageSoundClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3dfd72884e9d602489335edefabbc13f, type: 3}
     - target: {fileID: 952547904781508232, guid: bdb6f4e7380672543985f0a51d0bfe12, type: 3}
       propertyPath: m_UseGravity
       value: 1
@@ -2959,7 +2967,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 952547904781508238, guid: bdb6f4e7380672543985f0a51d0bfe12, type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
