@@ -18,6 +18,7 @@ public class Shotgun : MonoBehaviour
 
     [SerializeField] float inaccuracyDistance = 5f;
     [SerializeField] int maxAmmo;
+    //[SerializeField]  AudioClip sfx_wpn_sgn_gunshot_03;
     int currentAmmo;
     public TextMeshProUGUI AmmoText;
 
@@ -71,6 +72,7 @@ public class Shotgun : MonoBehaviour
             {
                 Debug.DrawRay(fpsCam.transform.position, GetShootingDirection() * range, Color.yellow, 0.3f);//for missing
             }
+           // SoundFXManager.instance.PlaySoundFXClip(sfx_wpn_sgn_gunshot_03, transform, 1f);
         }
 
     }
