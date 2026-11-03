@@ -17,6 +17,7 @@ public class Gun : MonoBehaviour
     [SerializeField] float fadeDuration = 0.3f;
 
 
+
     private void Awake()
     {
         controls = new CharacterInput();
