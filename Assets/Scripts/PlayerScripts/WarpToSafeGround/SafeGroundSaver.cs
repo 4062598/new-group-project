@@ -42,5 +42,6 @@ public class SafeGroundSaver : MonoBehaviour
     public void WarpPlayerToSafeGround()
     {
         transform.position = SafeGroundLocation;
+        Debug.Log("Warped player");
     }
 }

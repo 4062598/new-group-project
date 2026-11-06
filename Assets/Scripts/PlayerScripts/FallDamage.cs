@@ -10,9 +10,9 @@ public class FallDamage : MonoBehaviour
         safeGroundSaver = GameObject.FindGameObjectWithTag("Player").GetComponent<SafeGroundSaver>();
     }
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.root.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             Debug.Log("Player fall damage");
             GameManager.instance.ChangeHealth(20f);

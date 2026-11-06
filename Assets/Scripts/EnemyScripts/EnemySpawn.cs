@@ -20,10 +20,10 @@ public class EnemySpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if(transform.childCount < numEnemies)
-        {
-            makeAChild();
-        }
+       //if(transform.childCount < numEnemies)
+       // {
+       //     makeAChild();
+       // }
     }
 
     void makeAChild()
@@ -34,5 +34,5 @@ public class EnemySpawn : MonoBehaviour
         Vector3 spawnPosition = new Vector3(childx, 10f, childZ);
         GameObject newChild = Instantiate(prefab, spawnPosition, Quaternion.identity);
         newChild.transform.SetParent(transform); //parent enemy to the game manager, not the enemy we have
-}
+    }
 }
