@@ -12,14 +12,20 @@ public class Shotgun : MonoBehaviour
     [SerializeField] float _fireRate;
     float _timeSinceFired;
     public Camera fpsCam;
-    
 
+    [SerializeField] bool FullAuto = false;
     [SerializeField] int bulletsPerShot = 6;
 
     [SerializeField] float inaccuracyDistance = 5f;
     [SerializeField] int maxAmmo;
     int currentAmmo;
     public TextMeshProUGUI AmmoText;
+    [SerializeField] float RecoilKickBack = 0.08f;
+    [SerializeField] float RecoilKickUp = 6.0f;
+    [SerializeField] float RecoilReturnSpeed = 8.0f;
+
+    private Vector3 startPosition;
+    private Quaternion startRotation;
 
     private void Awake()
     {
@@ -31,19 +37,27 @@ public class Shotgun : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-     
+        startPosition = transform.localPosition;
+        startRotation = transform.localRotation;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        if (controls.Player.Shoot.triggered && Time.time > _timeSinceFired && CanShoot())
+
+        if (controls.Player.Shoot.triggered && !FullAuto && Time.time > _timeSinceFired && CanShoot())
         {
-          
-                Shoot();
+            Shoot();
             _timeSinceFired = Time.time + _fireRate;
         }
+        if (controls.Player.Shoot.inProgress && FullAuto && Time.time > _timeSinceFired && CanShoot())
+        {
+            Shoot();
+            _timeSinceFired = Time.time + _fireRate;
+        }
+
+        transform.localPosition = Vector3.Lerp(transform.localPosition, startPosition, RecoilReturnSpeed * Time.deltaTime);
+        transform.localRotation = Quaternion.Slerp(transform.localRotation, startRotation, RecoilReturnSpeed * Time.deltaTime);
     }
     void Shoot()
     {
@@ -72,7 +86,8 @@ public class Shotgun : MonoBehaviour
                 Debug.DrawRay(fpsCam.transform.position, GetShootingDirection() * range, Color.yellow, 0.3f);//for missing
             }
         }
-
+        transform.localPosition -= new Vector3(0, 0, RecoilKickBack);
+        transform.localRotation *= Quaternion.Euler(-RecoilKickUp, 0, 0);
     }
 
     Vector3 GetShootingDirection()

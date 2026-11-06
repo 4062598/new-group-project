@@ -11,10 +11,16 @@ public class Gun : MonoBehaviour
     [SerializeField] float _fireRate;
     float _timeSinceFired;
     public Camera fpsCam;
-
+    [SerializeField] bool FullAuto = false;
     [SerializeField] GameObject Laser;
     [SerializeField] Transform muzzle;
     [SerializeField] float fadeDuration = 0.3f;
+    [SerializeField] float RecoilKickBack = 0.08f;
+    [SerializeField] float RecoilKickUp = 6.0f;
+    [SerializeField] float RecoilReturnSpeed = 8.0f;
+
+    private Vector3 startPosition;
+    private Quaternion startRotation;
 
     private void Awake()
     {
@@ -23,17 +29,26 @@ public class Gun : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        startPosition = transform.localPosition;
+        startRotation = transform.localRotation;
     }
 
     // Update is called once per frame
     void Update()
     {
-       if (controls.Player.Shoot.triggered && Time.time > _timeSinceFired)
+        if (controls.Player.Shoot.triggered && !FullAuto && Time.time > _timeSinceFired)
         {
             Shoot();
             _timeSinceFired = Time.time + _fireRate;
         }
+        if (controls.Player.Shoot.inProgress && FullAuto && Time.time > _timeSinceFired)
+        {
+            Shoot();
+            _timeSinceFired = Time.time + _fireRate;
+        }
+
+        transform.localPosition = Vector3.Lerp(transform.localPosition, startPosition, RecoilReturnSpeed * Time.deltaTime);
+        transform.localRotation = Quaternion.Slerp(transform.localRotation, startRotation, RecoilReturnSpeed * Time.deltaTime);
     }
     void Shoot()
     {
@@ -56,7 +71,8 @@ public class Gun : MonoBehaviour
             //Debug.DrawRay(fpsCam.transform.position, fpsCam.transform.forward * range, Color.cyan, 0.3f);//for missing
             CreateLaser(fpsCam.transform.position + fpsCam.transform.forward * range);
         }
-        
+        transform.localPosition -= new Vector3(0, 0, RecoilKickBack);
+        transform.localRotation *= Quaternion.Euler(-RecoilKickUp, 0, 0);
 
     }
    

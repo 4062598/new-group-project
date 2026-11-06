@@ -33,7 +33,12 @@ public class WeaponSwitching : MonoBehaviour
             print("working");
             SelectWeapon();
         }
-     
+        if (controls.Player.SwitchWeapon3.triggered)
+        {
+            selectedWeapon = 2;
+            print("working");
+            SelectWeapon();
+        }
     }
     void SelectWeapon()
     {

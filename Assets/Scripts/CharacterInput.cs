@@ -80,6 +80,15 @@ public partial class @CharacterInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Switch Weapon3"",
+                    ""type"": ""Button"",
+                    ""id"": ""0fc0b205-2b75-4b2d-88d1-a968b450bfea"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -225,6 +234,17 @@ public partial class @CharacterInput : IInputActionCollection2, IDisposable
                     ""action"": ""Switch Weapon2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2b4ad6fd-c6e0-437a-8cd8-2f0952910aac"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch Weapon3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -239,6 +259,7 @@ public partial class @CharacterInput : IInputActionCollection2, IDisposable
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_SwitchWeapon1 = m_Player.FindAction("Switch Weapon1", throwIfNotFound: true);
         m_Player_SwitchWeapon2 = m_Player.FindAction("Switch Weapon2", throwIfNotFound: true);
+        m_Player_SwitchWeapon3 = m_Player.FindAction("Switch Weapon3", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -304,6 +325,7 @@ public partial class @CharacterInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Shoot;
     private readonly InputAction m_Player_SwitchWeapon1;
     private readonly InputAction m_Player_SwitchWeapon2;
+    private readonly InputAction m_Player_SwitchWeapon3;
     public struct PlayerActions
     {
         private @CharacterInput m_Wrapper;
@@ -314,6 +336,7 @@ public partial class @CharacterInput : IInputActionCollection2, IDisposable
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputAction @SwitchWeapon1 => m_Wrapper.m_Player_SwitchWeapon1;
         public InputAction @SwitchWeapon2 => m_Wrapper.m_Player_SwitchWeapon2;
+        public InputAction @SwitchWeapon3 => m_Wrapper.m_Player_SwitchWeapon3;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -341,6 +364,9 @@ public partial class @CharacterInput : IInputActionCollection2, IDisposable
                 @SwitchWeapon2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchWeapon2;
                 @SwitchWeapon2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchWeapon2;
                 @SwitchWeapon2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchWeapon2;
+                @SwitchWeapon3.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchWeapon3;
+                @SwitchWeapon3.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchWeapon3;
+                @SwitchWeapon3.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchWeapon3;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -363,6 +389,9 @@ public partial class @CharacterInput : IInputActionCollection2, IDisposable
                 @SwitchWeapon2.started += instance.OnSwitchWeapon2;
                 @SwitchWeapon2.performed += instance.OnSwitchWeapon2;
                 @SwitchWeapon2.canceled += instance.OnSwitchWeapon2;
+                @SwitchWeapon3.started += instance.OnSwitchWeapon3;
+                @SwitchWeapon3.performed += instance.OnSwitchWeapon3;
+                @SwitchWeapon3.canceled += instance.OnSwitchWeapon3;
             }
         }
     }
@@ -375,5 +404,6 @@ public partial class @CharacterInput : IInputActionCollection2, IDisposable
         void OnShoot(InputAction.CallbackContext context);
         void OnSwitchWeapon1(InputAction.CallbackContext context);
         void OnSwitchWeapon2(InputAction.CallbackContext context);
+        void OnSwitchWeapon3(InputAction.CallbackContext context);
     }
 }
