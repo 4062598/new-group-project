@@ -26,7 +26,7 @@ public class Damager : MonoBehaviour
     {
         if (hit == true)
         {
-            GameManager.instance.Changehealth(damage);
+            GameManager.instance.ChangeHealth(damage);
             hit = false;
         }
     }
