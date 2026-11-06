@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     {
         
     }
-    public void Changehealth(float healthIncrement)
+    public void ChangeHealth(float healthIncrement)
     {
         playerhealth -= healthIncrement;
         Debug.Log("playerhealth");

@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
 		controller.Move(velocity * Time.deltaTime);
     }
 
-    private bool isGrounded()
+    public bool isGrounded()
     {
 		return Physics.CheckSphere(ground.position, distanceToGround, groundMask);
     }
