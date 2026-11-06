@@ -5,9 +5,11 @@ using UnityEngine.AI;
 public class EnemyStartup : MonoBehaviour
 {
     [SerializeField] private float MaxDistanceToNavMesh = 2.0f;
+    private Target target;
 
     void Start()
     {
+        target = GetComponent<Target>();
         Invoke("delayAddingScript", 1.5f);
     }
 
@@ -30,7 +32,7 @@ public class EnemyStartup : MonoBehaviour
         else
         {
             Debug.LogWarning($"{gameObject.name} is too far from NavMesh and has been destroyed");
-            Destroy(gameObject);
+            target.Die();
         }
     }
 }

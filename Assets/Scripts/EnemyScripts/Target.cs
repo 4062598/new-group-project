@@ -53,7 +53,7 @@ public class Target : MonoBehaviour
         }
        // SoundFXManager.instance.PlayRandomSoundFXClip(damageSoundClips, transform, 1f);
     }
-    void Die()
+    public void Die()
     {
         Destroy(gameObject);
         // Instantiate(Collectable, gameObject.transform.position, Quaternion.identity);
