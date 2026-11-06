@@ -18,7 +18,7 @@ public class Gun : MonoBehaviour
     [SerializeField] float RecoilKickBack = 0.08f;
     [SerializeField] float RecoilKickUp = 6.0f;
     [SerializeField] float RecoilReturnSpeed = 8.0f;
-
+    [SerializeField] private AudioSource Gunshot;
     private Vector3 startPosition;
     private Quaternion startRotation;
 
@@ -41,13 +41,17 @@ public class Gun : MonoBehaviour
         if (controls.Player.Shoot.triggered && !FullAuto && Time.time > _timeSinceFired)
         {
 
+            Gunshot.enabled = false;
             Shoot();
             _timeSinceFired = Time.time + _fireRate;
+            Gunshot.enabled = true;
         }
         if (controls.Player.Shoot.inProgress && FullAuto && Time.time > _timeSinceFired)
         {
+            Gunshot.enabled = false;
             Shoot();
             _timeSinceFired = Time.time + _fireRate;
+            Gunshot.enabled = true;
         }
 
         transform.localPosition = Vector3.Lerp(transform.localPosition, startPosition, RecoilReturnSpeed * Time.deltaTime);

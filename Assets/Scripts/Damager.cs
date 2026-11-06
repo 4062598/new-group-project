@@ -16,7 +16,7 @@ public class Damager : MonoBehaviour
         Debug.Log(health);
         if (other.transform.root.CompareTag("Player"))
         {
-            SoundFXManager.instance.PlayRandomSoundFXClip(PlayerHurtSoundClips, transform, 1f);
+         //   SoundFXManager.instance.PlayRandomSoundFXClip(PlayerHurtSoundClips, transform, 1f);
             hit = true;
 
         }
