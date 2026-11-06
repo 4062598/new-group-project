@@ -1,0 +1,63 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Target : MonoBehaviour
+{
+    public float health = 50f;
+    // public float damage = 10f;
+    //bool hit = false;
+
+    // Damage sound clips
+    [SerializeField] private AudioClip[] damageSoundClips;
+
+    // Prefab of the collectable
+
+   // public GameObject Collectable;
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+  //  void OnTriggerEnter (Collider other)
+   // {
+      //  Debug.Log(health);
+      //  if (other.transform.root.CompareTag("Player"))
+      //  {
+       //     hit = true;
+            
+       // }
+  //  }
+    // Update is called once per frame
+    void Update()
+    {
+       // if (hit == true)
+       // {
+         //   GameManager.instance.Changehealth(damage);
+         //   hit = false;
+       // }
+    }
+
+    public void TakeDamage(float amount)
+    {
+       
+        health -= amount;
+        Debug.Log(health);
+       
+        if (health <= 0f)
+        {
+            Die();
+        }
+       // SoundFXManager.instance.PlayRandomSoundFXClip(damageSoundClips, transform, 1f);
+    }
+    public void Die()
+    {
+        Destroy(gameObject);
+        // Instantiate(Collectable, gameObject.transform.position, Quaternion.identity);
+    }
+
+
+}
