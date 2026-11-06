@@ -20,7 +20,7 @@ public class FallDamage : MonoBehaviour
         }
         else 
         {
-            Destroy(other.gameObject);
+
         }
     }
 }
