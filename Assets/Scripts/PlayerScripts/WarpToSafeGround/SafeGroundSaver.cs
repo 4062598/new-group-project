@@ -6,7 +6,7 @@ public class SafeGroundSaver : MonoBehaviour
 {
     [SerializeField] private float SaveFrequency = 3f;
 
-    public Vector3 SafeGroundLocation { get; private set; } = new Vector3(0f, 0f);
+    public Vector3 SafeGroundLocation { get; private set; } = new Vector3(0f, 0f, 0f);
 
     private Coroutine safeGroundCoroutine;
 
