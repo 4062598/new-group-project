@@ -14,9 +14,9 @@ public class SafeGroundSaver : MonoBehaviour
 
     public void Start()
     {
-        SafeGroundLocation = transform.position;
-
         safeGroundCoroutine = StartCoroutine(SaveGroundLocation());
+
+        SafeGroundLocation = transform.position;
 
         groundCheck = GetComponent<PlayerController>();
     }
@@ -32,6 +32,7 @@ public class SafeGroundSaver : MonoBehaviour
 
         if (groundCheck.isGrounded())
         {
+            Debug.Log("Saved ground location");
             SafeGroundLocation = transform.position;
         }
         safeGroundCoroutine = StartCoroutine(SaveGroundLocation());
