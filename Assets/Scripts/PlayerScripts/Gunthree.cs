@@ -15,7 +15,7 @@ public class Gunthree : MonoBehaviour
     [SerializeField] float _fireRate;
     float _timeSinceFired;
     [SerializeField] int maxAmmo;
-    int currentAmmo;
+    [SerializeField] int currentAmmo;
     [SerializeField] bool FullAuto = false;
     public Camera fpsCam;
     [SerializeField] Transform muzzle;
@@ -114,5 +114,6 @@ public class Gunthree : MonoBehaviour
     private void OnDisable()
     {
         controls.Disable();
+        Gunshot.enabled = false;
     }
 }

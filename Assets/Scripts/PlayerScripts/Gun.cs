@@ -86,10 +86,12 @@ public class Gun : MonoBehaviour
     private void OnEnable()
     {
         controls.Enable();
+        
     }
     private void OnDisable()
     {
         controls.Disable();
+        Gunshot.enabled = false;
     }
     void CreateLaser(Vector3 end)
     {

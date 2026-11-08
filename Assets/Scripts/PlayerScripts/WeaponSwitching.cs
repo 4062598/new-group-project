@@ -5,7 +5,9 @@ public class WeaponSwitching : MonoBehaviour
 {
     public int selectedWeapon = 0;
     private CharacterInput controls;
-
+    public int acquiredWeapons = 1;
+    private int previouslyacquiredWeapons;
+    
     private void Awake()
     {
         controls = new CharacterInput();
@@ -40,20 +42,34 @@ public class WeaponSwitching : MonoBehaviour
             SelectWeapon();
         }
     }
+    public void GainWeapon(int weapongained)
+
+    {
+        previouslyacquiredWeapons = acquiredWeapons;
+        acquiredWeapons = weapongained;
+        selectedWeapon = acquiredWeapons;
+        SelectWeapon();
+      
+       Debug.Log(acquiredWeapons);
+    }
     void SelectWeapon()
     {
-        int i = 0;
-        foreach (Transform weapon in transform)
-        {
-            if (i == selectedWeapon)
+        // WeaponSwitching children = gameObject.GetComponentInChildren<WeaponSwitching>();
+        if (selectedWeapon == acquiredWeapons || selectedWeapon == 0 || selectedWeapon == previouslyacquiredWeapons) {
+            int i = 0;
+            foreach (Transform weapon in transform)
             {
-                weapon.gameObject.SetActive(true);
+                
+                if (i == selectedWeapon)
+                {
+                    weapon.gameObject.SetActive(true);
+                }
+                else
+                {
+                    weapon.gameObject.SetActive(false);
+                }
+                i++;
             }
-            else
-            {
-                weapon.gameObject.SetActive(false);
-            }
-            i++;
         }
     }
     private void OnEnable()

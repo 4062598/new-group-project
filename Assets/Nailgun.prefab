@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2770278148202866334}
   - component: {fileID: 2770278148202866335}
   - component: {fileID: 2770278148202866332}
+  - component: {fileID: 4122144311988055266}
   m_Layer: 0
   m_Name: Nailgun
   m_TagString: Untagged
@@ -106,8 +107,25 @@ MonoBehaviour:
   FullAuto: 1
   fpsCam: {fileID: 0}
   muzzle: {fileID: 2770278148342329378}
-  allowInvoke: 1
   AmmoText: {fileID: 0}
+  RecoilKickBack: 0.08
+  RecoilKickUp: 6
+  RecoilReturnSpeed: 8
+  Gunshot: {fileID: 0}
+--- !u!114 &4122144311988055266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2770278148202866333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d35068f12f7a8084a87c682b3cc596f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreValue: 50
+  CollectableSounds: []
 --- !u!1 &2770278148342329379
 GameObject:
   m_ObjectHideFlags: 0

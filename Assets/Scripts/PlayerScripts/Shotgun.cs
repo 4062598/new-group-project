@@ -19,7 +19,7 @@ public class Shotgun : MonoBehaviour
     [SerializeField] float inaccuracyDistance = 5f;
     [SerializeField] int maxAmmo;
     //[SerializeField]  AudioClip sfx_wpn_sgn_gunshot_03;
-    int currentAmmo;
+    [SerializeField] int currentAmmo;
     public TextMeshProUGUI AmmoText;
     [SerializeField] float RecoilKickBack = 0.08f;
     [SerializeField] float RecoilKickUp = 6.0f;
@@ -27,6 +27,7 @@ public class Shotgun : MonoBehaviour
     [SerializeField] private AudioSource Gunshot;
     private Vector3 startPosition;
     private Quaternion startRotation;
+    
 
     private void Awake()
     {
@@ -35,17 +36,22 @@ public class Shotgun : MonoBehaviour
         
         AmmoText.text = "Shells: " + currentAmmo.ToString();
     }
+    
     // Start is called before the first frame update
     void Start()
     {
         startPosition = transform.localPosition;
         startRotation = transform.localRotation;
     }
+    //public void WeaponAcquired(bool acquired)
+   // {
+     //   Acquired = acquired;
+   // }
 
     // Update is called once per frame
     void Update()
     {
-        
+       
         if (controls.Player.Shoot.triggered && !FullAuto && Time.time > _timeSinceFired && CanShoot())
         {
             Gunshot.enabled = false;
@@ -64,6 +70,7 @@ public class Shotgun : MonoBehaviour
 
         transform.localPosition = Vector3.Lerp(transform.localPosition, startPosition, RecoilReturnSpeed * Time.deltaTime);
         transform.localRotation = Quaternion.Slerp(transform.localRotation, startRotation, RecoilReturnSpeed * Time.deltaTime);
+        
     }
     void Shoot()
     {
@@ -125,12 +132,15 @@ public class Shotgun : MonoBehaviour
         AmmoText.text = "Shells: " + currentAmmo.ToString();
         Debug.Log(currentAmmo);
     }
+   
     private void OnEnable()
     {
         controls.Enable();
+
     }
     private void OnDisable()
     {
         controls.Disable();
+        Gunshot.enabled = false;
     }
 }
