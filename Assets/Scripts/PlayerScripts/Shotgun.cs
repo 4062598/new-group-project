@@ -33,7 +33,7 @@ public class Shotgun : MonoBehaviour
         controls = new CharacterInput();
         currentAmmo = maxAmmo;
         
-        AmmoText.text = "Ammo:" + currentAmmo.ToString();
+        AmmoText.text = "Shells: " + currentAmmo.ToString();
     }
     // Start is called before the first frame update
     void Start()
@@ -69,7 +69,7 @@ public class Shotgun : MonoBehaviour
     {
         currentAmmo--;//currentAmmo =currentAmmo - 1
         currentAmmo = Mathf.Clamp(currentAmmo, 0, maxAmmo);
-        AmmoText.text = "Ammo:" + currentAmmo.ToString();
+        AmmoText.text = "Shells: " + currentAmmo.ToString();
         Debug.Log(currentAmmo);
         for (int i = 0; i < bulletsPerShot; i++)
         {
@@ -115,7 +115,16 @@ public class Shotgun : MonoBehaviour
         bool enoughAmmo = currentAmmo > 0;
         return enoughAmmo;
     }
+    public void ChangeAmmoCount(int ammoIncrement)
 
+    {
+
+        currentAmmo += ammoIncrement;
+
+        currentAmmo = Mathf.Clamp(currentAmmo, 0, maxAmmo);
+        AmmoText.text = "Shells: " + currentAmmo.ToString();
+        Debug.Log(currentAmmo);
+    }
     private void OnEnable()
     {
         controls.Enable();

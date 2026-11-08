@@ -90,7 +90,17 @@ public class Gunthree : MonoBehaviour
        // }
 
     }
-    
+
+    public void ChangeAmmoCount(int ammoIncrement)
+
+    {
+
+        currentAmmo += ammoIncrement;
+
+        currentAmmo = Mathf.Clamp(currentAmmo, 0, maxAmmo);
+        AmmoText.text = "Shells: " + currentAmmo.ToString();
+        Debug.Log(currentAmmo);
+    }
     bool CanShoot()
     {
         bool enoughAmmo = currentAmmo > 0;
