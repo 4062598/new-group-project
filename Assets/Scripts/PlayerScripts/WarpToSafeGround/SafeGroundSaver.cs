@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class SafeGroundSaver : MonoBehaviour
 {
-    [SerializeField] private float SaveFrequency = 3f;
+    [SerializeField] private float SaveFrequency = 20f;
 
-    public Vector3 Spawnpoint { get; set; } = new Vector3(1, 1, 0);
-
+    // test variable
+    //public Vector3 Spawnpoint { get; set; } = new Vector3(30f,30f,30f);
+    [SerializeField] public Transform Spawnpoint;
     public Vector3 SafeGroundLocation { get; private set; } = new Vector3(0f, 0f, 0f);
 
     private Coroutine safeGroundCoroutine;
@@ -35,6 +36,7 @@ public class SafeGroundSaver : MonoBehaviour
         if (groundCheck.isGrounded())
         {
             Debug.Log("Saved ground location");
+            Debug.Log(SafeGroundLocation);
             SafeGroundLocation = transform.position;
         }
         safeGroundCoroutine = StartCoroutine(SaveGroundLocation());
@@ -44,8 +46,22 @@ public class SafeGroundSaver : MonoBehaviour
 
     public void WarpPlayerToSafeGround()
     {
-        //transform.position = SafeGroundLocation;
-        transform.position = Spawnpoint;
+        CharacterController controller = GetComponent<CharacterController>();
+        controller.enabled = false;
+        transform.position = SafeGroundLocation;
         Debug.Log("Warped player");
+        Debug.Log(SafeGroundLocation);
+        controller.enabled = true;
+    }
+
+    public void Respawn()
+    {
+        //warp player to set location, spawnpoint or checkpoint
+        CharacterController controller = GetComponent<CharacterController>();
+        controller.enabled = false;
+        //set player position and rotation to spawnpoint
+        transform.position = Spawnpoint.position;
+
+        controller.enabled = true;
     }
 }

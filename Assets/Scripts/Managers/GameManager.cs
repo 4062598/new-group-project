@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI text;
     public float playerhealth = 100f;
     int score;
-
+    private SafeGroundSaver safeGroundSaver;
 
 
 
@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
 
     void playerDie()
     {
+        safeGroundSaver.WarpPlayerToSafeGround();
         Debug.Log("End");
         //Application.Quit();
     }
