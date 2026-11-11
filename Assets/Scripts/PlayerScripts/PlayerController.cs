@@ -5,13 +5,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private AudioSource footstepsSound;
-
-    private CharacterInput controls; // Our controls we defined
+	private CharacterInput controls; // Our controls we defined
     private Vector3 velocity; // To hold our current velocity
     private Vector2 move; // To hold our move
-    bool isMoving = false;
-
+    
 
     private CharacterController controller; // Character controller
 
@@ -22,7 +19,6 @@ public class PlayerController : MonoBehaviour
     public Transform ground; // Ground check empty goes in here
     public float distanceToGround = 0.4f; // How close the ground needs to be to register
     public LayerMask groundMask; // What layer is ground?
-    
 	
     void Awake()
     {
@@ -35,30 +31,6 @@ public class PlayerController : MonoBehaviour
 		PlayerMovement();
 		Grav();
 		Jump();
-        PlayerFootstepCheck();
-        if (isMoving && isGrounded())
-        {
-            footstepsSound.enabled = true;
-        }
-        else
-        {
-            footstepsSound.enabled = false;
-        }
-    }
-
-    private void PlayerFootstepCheck()
-    {
-        if (Keyboard.current.wKey.isPressed ||
-         Keyboard.current.aKey.isPressed ||
-         Keyboard.current.sKey.isPressed ||
-         Keyboard.current.dKey.isPressed)
-        {
-            isMoving = true;
-        }
-        else
-        {
-            isMoving = false;
-        }
     }
 
     private void Grav()
@@ -71,7 +43,7 @@ public class PlayerController : MonoBehaviour
 		controller.Move(velocity * Time.deltaTime);
     }
 
-    public bool isGrounded()
+    private bool isGrounded()
     {
 		return Physics.CheckSphere(ground.position, distanceToGround, groundMask);
     }
@@ -91,7 +63,6 @@ public class PlayerController : MonoBehaviour
 		}
     }
 
-   
     void OnEnable()
     {
 		controls.Enable();
